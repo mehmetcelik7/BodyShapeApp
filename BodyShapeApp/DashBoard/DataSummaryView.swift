@@ -15,7 +15,7 @@ struct DataSummaryView: View {
     let percent1 = 0.6
     let percent2 = 0.4
     let peopleImages = [
-        person1,person2,person3,person4
+        person1,person2,person3,person4, person1,person2,person3,person4
     ]
     
     var body: some View {
@@ -71,6 +71,47 @@ struct DataSummaryView: View {
                 }
                 .frame(height: geometry.size.width * (1-percent1) - delta)
                 
+                
+                HStack(spacing: 15) {
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(.black)
+                        .frame(width: geometry.size.width * percent2 - delta,height: geometry.size.width * percent2 - delta)
+                        .overlay(
+                            Text("Start")
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                        )
+                    
+                    
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(.black,lineWidth: 1)
+                        .overlay(
+                            VStack(alignment: .leading) {
+                                Text("Members")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                HStack(spacing: -10){
+                                    
+                                    let extraPeople = min(peopleImages.count,2)
+                                    
+                                    let circleDim = 45.0
+                                    ForEach(0..<extraPeople, id: \.self){ i in
+                                        Circle()
+                                            .fill(.black)
+                                            .frame(width: circleDim)
+                                    }
+                                    if peopleImages.count > 2 {
+                                        Text("\(peopleImages.count - extraPeople)")
+                                            .foregroundColor(.white)
+                                        
+                                    }
+                                   
+                                }
+
+                            }
+                        )
+                    
+                }.frame(height: geometry.size.width * percent2 - delta)
                 
                 
             }
