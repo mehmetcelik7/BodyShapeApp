@@ -15,8 +15,9 @@ struct DataSummaryView: View {
     let percent1 = 0.6
     let percent2 = 0.4
     let peopleImages = [
-        person1,person2,person3,person4, person1,person2,person3,person4
+        person1,person2,person3,person4, person1,person2,person3,person4,person1,person2
     ]
+    let numberOfPeopleShowing : Int
     
     var body: some View {
         GeometryReader { geometry in
@@ -92,17 +93,19 @@ struct DataSummaryView: View {
                                     .fontWeight(.semibold)
                                 HStack(spacing: -10){
                                     
-                                    let extraPeople = min(peopleImages.count,2)
+                                    let extraPeople = min(peopleImages.count,numberOfPeopleShowing)
                                     
                                     let circleDim = 45.0
                                     ForEach(0..<extraPeople, id: \.self){ i in
-                                        Circle()
-                                            .fill(.black)
-                                            .frame(width: circleDim)
+                                        CircleImageView(
+                                            imageName: peopleImages[i],
+                                            color: .white,
+                                            size: circleDim,
+                                            lineWidth: 1
+                                        )
                                     }
                                     if peopleImages.count > 2 {
-                                        Text("\(peopleImages.count - extraPeople)")
-                                            .foregroundColor(.white)
+                                        CircleCountView(count: peopleImages.count - extraPeople, size: circleDim, color: .black, lineWidth: 1)
                                         
                                     }
                                    
@@ -121,5 +124,5 @@ struct DataSummaryView: View {
 }
 
 #Preview {
-    DataSummaryView(arrow: "arrow.dowsn",calories: "4.569")
+    DataSummaryView(arrow: "arrow.dowsn",calories: "4.569", numberOfPeopleShowing: 2)
 }

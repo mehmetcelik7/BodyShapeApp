@@ -19,7 +19,7 @@ struct DashBoardView: View {
                     WelcomeMessageView(userName: "Emily")
                     WeightView(weight: 61.2, weightUnits: "lb")
                     
-                    DataSummaryView(arrow: "arrow.dowsn",calories: "4.569")
+                    DataSummaryView(arrow: "arrow.dowsn",calories: "4.569", numberOfPeopleShowing: 2)
                     Spacer()
                     ButtonView()
                     
