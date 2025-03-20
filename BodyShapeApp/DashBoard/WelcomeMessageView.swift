@@ -8,11 +8,25 @@
 import SwiftUI
 
 struct WelcomeMessageView: View {
+    let userName: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading, spacing: 15) {
+            HStack {
+                Text("Hi,")
+                Text(userName)
+                    .fontWeight(.bold)
+                
+            }.font(.largeTitle)
+            
+            Text("Your boards looks so good")
+                .font(.title3)
+                .frame(width: screenWidth / 2, alignment: .topLeading)
+                .multilineTextAlignment(.leading)
+        }
     }
 }
 
 #Preview {
-    WelcomeMessageView()
+    WelcomeMessageView(userName: "emily")
 }

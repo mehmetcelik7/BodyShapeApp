@@ -9,13 +9,23 @@ import SwiftUI
 
 struct DashBoardView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+      
+            VStack {
+                
+                
+                IconRight(imageName: "circle.grid.cross.fill",angle: 45)
+                    .padding()
+                VStack(alignment: .leading, spacing: 20) {
+                    WelcomeMessageView(userName: "Emily")
+                    WeightView(weight: 61.2, weightUnits: "lb")
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
+                    
+                Spacer()
+          
         }
-        .padding()
+        
     }
 }
 
