@@ -19,13 +19,13 @@ struct FillBarView: View {
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(colorBG)
-                    .opacity(0.7)
+                    
                     .frame(width: .infinity,height: barWidth)
                 
                 
                 RoundedRectangle(cornerRadius: 10)
                     .fill(colorFill)
-                    .opacity(0.7)
+                    
                     .frame(width: geometry.size.width * percentage,height: barWidth)
             }
             
